@@ -1,7 +1,9 @@
-# Native R kernel for Jupyter [![Build Status]][Travis]
+# Native R kernel for Jupyter [![b-Travis]][Travis] [![b-CRAN]][CRAN]
 
-[Build Status]: https://travis-ci.org/IRkernel/IRkernel.svg?branch=master
+[b-Travis]: https://travis-ci.org/IRkernel/IRkernel.svg?branch=master "Build status"
 [Travis]: https://travis-ci.org/IRkernel/IRkernel
+[b-CRAN]: https://www.r-pkg.org/badges/version/IRkernel "Comprehensive R Archive Network"
+[CRAN]: https://cran.r-project.org/package=IRkernel
 
 For detailed requirements and install instructions see [irkernel.github.io](http://irkernel.github.io/)
 
@@ -12,12 +14,10 @@ For detailed requirements and install instructions see [irkernel.github.io](http
 
 ## Installation
 
-We will soon submit the IRkernel package to CRAN. Until then, you can install it via the `devtools` package:
+This package is available on CRAN:
 
 ```R
-install.packages('devtools')
-devtools::install_github('IRkernel/IRkernel')
-# or devtools::install_local('IRkernel-master.tar.gz')
+install.packages('IRkernel')
 IRkernel::installspec()  # to register the kernel in the current R installation
 ```
 
