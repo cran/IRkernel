@@ -32,15 +32,25 @@ get_shadowenv <- function() {
 backup_env <- new.env()
 # Circumvent windows build bug, see issue #530
 backup_env$utils_flush_console <- function(...) {}
+# Circumvent devtools bug
+backup_env$base_flush_connection <- function(...) {}
 
 init_backup_env <- function() {
+    if (!identical(environment(utils::flush.console), environment(utils::read.delim))) {
+        tb <- .traceback(2)
+        warning(
+            'init_backup_env called a second time after init_shadowenv:\n',
+            paste(capture.output(traceback(tb)), collapse = '\n')
+        )
+        return()
+    }
     backup_env$base_flush_connection <- base::flush.connection
     backup_env$utils_flush_console <- utils::flush.console
     backup_env$base_quit <- base::quit
 }
 
 # Adds functions which do not need any access to the executer into the users searchpath
-#' @importFrom utils getFromNamespace
+#' @importFrom utils getFromNamespace getS3method
 #' @importFrom evaluate flush_console
 init_shadowenv <- function() {
     # add the accessors to the shadow env itself, so they are actually accessable
@@ -53,11 +63,9 @@ init_shadowenv <- function() {
 
     # workaround for problems with vignette(xxx) not bringing up the vignette
     # content in the browser: https://github.com/IRkernel/IRkernel/issues/267
-    add_to_user_searchpath('print.vignette', function(...) {
-        # utils:::print.vignette is private and R CMD check does not like us
-        # using it directly, so work around the check by using getFromNamespace
-        utils_print_vignette <- getFromNamespace('print.vignette', 'utils')
-        utils_print_vignette(...)
+    add_to_user_searchpath('print.vignette', function(x, ...) {
+        # R CMD check does not like us using :::
+        getS3method('print', 'vignette')(x, ...)
         # returning immediately will run into trouble with zmq and its polling
         # preventing the vignette server to startup. So wait a little to let
         # it startup...
@@ -102,6 +110,8 @@ init_cran_repo <- function() {
 
 init_session <- function() {
     init_cran_repo()
+    # We support color even if isatty(stdout()) is FALSE
+    options(crayon.enabled = TRUE)
 }
 
 

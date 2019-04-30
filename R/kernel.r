@@ -229,39 +229,13 @@ complete = function(request) {
     code <- request$content$code
     cursor_pos <- request$content$cursor_pos
     
-    # Find which line we're on and position within that line
-    lines <- strsplit(code, '\n', fixed = TRUE)[[1]]
-    chars_before_line <- 0L
-    for (line in lines) {
-        new_cursor_pos <- cursor_pos - nchar(line) - 1L # -1 for the newline
-        if (new_cursor_pos < 0L) {
-            break
-        }
-        cursor_pos <- new_cursor_pos
-        chars_before_line <- chars_before_line + nchar(line) + 1L
-    }
-    
-    utils:::.assignLinebuffer(line)
-    utils:::.assignEnd(cursor_pos)
-    utils:::.guessTokenFromLine()
-    utils:::.completeToken()
-        
-    # .guessTokenFromLine, like most other functions here usually sets variables in .CompletionEnv.
-    # When specifying update = FALSE, it instead returns a list(token = ..., start = ...)
-    c.info <- c(
-        list(comps = utils:::.retrieveCompletions()),
-        utils:::.guessTokenFromLine(update = FALSE))
-    
-    # good coding style for completions
-    comps <- gsub('=$', ' = ', c.info$comps)
-    
-    start_position <- chars_before_line + c.info$start
+    comps <- completions(code, cursor_pos)
     send_response('complete_reply', request, 'shell', list(
-        matches = as.list(comps),  # make single strings not explode into letters
+        matches = as.list(comps$comps),  # make single strings not explode into letters
         metadata = namedlist(),
         status = 'ok',
-        cursor_start = start_position,
-        cursor_end = start_position + nchar(c.info$token)))
+        cursor_start = comps$start,
+        cursor_end = comps$end))
 },
 
 inspect = function(request) {
@@ -286,10 +260,10 @@ inspect = function(request) {
 
     # Get token under the `cursor_pos`.
     # Since `.guessTokenFromLine()` does not check the characters after `cursor_pos`
-    # check them by a loop.
+    # check them by a loop. Use get since R CMD check does not like :::
     token <- ''
     for (i in seq(cursor_pos, nchar(code))) {
-        token_candidate <- utils:::.guessTokenFromLine(code, i)
+        token_candidate <- get('.guessTokenFromLine', asNamespace('utils'))(code, i)
         if (nchar(token_candidate) == 0) break
         token <- token_candidate
     }
