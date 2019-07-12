@@ -50,9 +50,13 @@ class IRkernelTests(jkt.KernelTests):
         {'text': 'seq_len(',               'matches': {'length.out = '}},
         {'text': 'base::transform(',       'matches': {'`_data` = ', '...'}},
         {'text': 'foo(R_system',           'matches': {'R_system_version'}},
+        {'text': 'version$plat',           'matches': {'version$platform'}},
+        {'text': 'stats4::AIC@def',        'matches': {'stats4::AIC@default'}},
+        {'text': 'stats4::AIC@default@ta', 'matches': {'stats4::AIC@default@target'}},
         {'text': 'grDevice',               'matches': {'grDevices::'}},
         {'text': 'base::abbrev',           'matches': {'base::abbreviate'}},
         {'text': 'base::.rowNamesD',       'matches': {'base::`.rowNamesDF<-`'}},
+        {'text': 'repr:::repr_png.def',    'matches': {'repr:::repr_png.default'}},
         {'text': 'repr::format2repr$mark', 'matches': {'repr::format2repr$markdown'}},
     ]
 
