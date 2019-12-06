@@ -1,7 +1,7 @@
 #' @usage
 #' jupyter_option_defaults
 #' 
-#' @name IRkernel
+#' @rdname IRkernel-package
 #' @export
 jupyter_option_defaults <- list(
     jupyter.rich_display = TRUE, # moved from IRdisplay
@@ -13,6 +13,7 @@ jupyter_option_defaults <- list(
     jupyter.plot_mimetypes = c(
         'text/plain',
         'image/png'),
+    jupyter.plot_scale = 2,
     jupyter.in_kernel = FALSE)
 
 from_env <- list(
