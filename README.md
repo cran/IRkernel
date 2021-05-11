@@ -1,15 +1,15 @@
 # Native R kernel for Jupyter [![b-Travis]][Travis] [![b-CRAN]][CRAN]
 
-[b-Travis]: https://travis-ci.org/IRkernel/IRkernel.svg?branch=master "Build status"
-[Travis]: https://travis-ci.org/IRkernel/IRkernel
+[b-Travis]: https://travis-ci.com/IRkernel/IRkernel.svg?branch=master "Build status"
+[Travis]: https://travis-ci.com/IRkernel/IRkernel
 [b-CRAN]: https://www.r-pkg.org/badges/version/IRkernel "Comprehensive R Archive Network"
 [CRAN]: https://cran.r-project.org/package=IRkernel
 
-For detailed requirements and install instructions see [irkernel.github.io](http://irkernel.github.io/)
+For detailed requirements and install instructions see [irkernel.github.io](https://irkernel.github.io/)
 
 ## Requirements
 
-* [Jupyter](http://jupyter.org).
+* [Jupyter](https://jupyter.org).
 * A current [R installation](https://www.R-project.org).
 
 ## Installation
@@ -19,6 +19,7 @@ This package is available on CRAN:
 ```R
 install.packages('IRkernel')
 IRkernel::installspec()  # to register the kernel in the current R installation
+jupyter labextension install @techrah/text-shortcuts  # for RStudio’s shortcuts
 ```
 
 Per default `IRkernel::installspec()` will install a kernel with the name “ir” and a
@@ -42,7 +43,7 @@ Now both R versions are available as an R kernel in the notebook.
 
 ### If you encounter problems during installation
 
-1. Have a look at the [full installation instructions](http://irkernel.github.io/installation/)!
+1. Have a look at the [full installation instructions](https://irkernel.github.io/installation/)!
 2. [Search the existing open and closed issues](https://github.com/IRkernel/IRkernel/issues?utf8=%E2%9C%93&q=is%3Aissue).
 3. If you are sure that this is a new problem, [file an issue](https://github.com/IRkernel/IRkernel/issues/new).
 
