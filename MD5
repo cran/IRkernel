@@ -1,10 +1,10 @@
-cb70375177966511a6cab6423e982241 *DESCRIPTION
-3fd4786bf5351f2b5fa63d036ae8e5b2 *LICENSE
+3f990e07c69dc5b0f07d47de6b7a9480 *DESCRIPTION
+3fe186c89f530bf2944b4d33064d7f79 *LICENSE
 fa6852a2341a2ff99833c40becb6c866 *NAMESPACE
 b1c4f4c93173b0a9ceb834ce9d78bd99 *R/class_unions.r
 87f62d7255f43134bdf4f2306748b2f2 *R/comm_manager.r
 9dc12cb752cf14ad77d7d85f3cfe5861 *R/compat.r
-2f57946c8973461865376a434a22e049 *R/completion.r
+bbcb3d51057d8f79167a3e9e5b76a7aa *R/completion.r
 1867fc3e83d2498e396eec07d1fa5847 *R/environment_runtime.r
 d417c7ed38d20a243617f5c624496916 *R/environment_shadow.r
 f9d5d490e56393c47b544ff995584739 *R/execution.r
@@ -21,6 +21,7 @@ daae9e89cf9362aec06e6138100ec044 *R/options.r
 53dfb0e6c19b3a09d9856e5fbfe2bf9c *inst/kernelspec/kernel.js
 f209c9fba50a620fdc8cfabecf3b3d4e *inst/kernelspec/kernel.json
 20c1346c7adfcfa2f6ccdc20703fa84d *inst/kernelspec/logo-64x64.png
+0d57c2c2f2b9e19e1a221b6c7ef0dedb *inst/kernelspec/logo-svg.svg
 dfb7be9510d7ecfd3c0d0d674addaeb5 *man/Comm-class.Rd
 246fffe4a7ce7bb73e3dc5be38780628 *man/CommManager-class.Rd
 48a1912f0dceeeec78e7b8c02f2afb86 *man/IRkernel-package.Rd
@@ -29,7 +30,7 @@ b55bfa5a99e1a14a2f4660e322c359e3 *man/comm_manager.Rd
 b24db16df7be50d38e8c5382d4afea72 *man/log.Rd
 ce78f7bdbe1ef4c47a5a3f1b9e02c647 *man/main.Rd
 6db253d573f087960e03ca43aee1e2ff *tests/testthat.R
-d3df8b69cd47c52948e9762293693924 *tests/testthat/__pycache__/test_ir.cpython-310.pyc
+56d27ab76b7571c622f084d63f64e307 *tests/testthat/__pycache__/test_ir.cpython-310.pyc
 285575d1924a6d400bb42498246d864c *tests/testthat/__pycache__/test_ir.cpython-37.pyc
 8f9947682f668f93ee030166fd72f02a *tests/testthat/__pycache__/test_ir.cpython-38.pyc
 0200c373dbd74afa164eca246079841f *tests/testthat/__pycache__/test_ir.cpython-39.pyc
